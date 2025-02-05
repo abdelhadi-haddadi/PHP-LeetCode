@@ -38,3 +38,45 @@ echo $solution->maxAscendingSum($nums2) . "\n"; // Output: 150 🚀
 echo $solution->maxAscendingSum($nums3) . "\n"; // Output: 33 ✅
 ?>
 
+<?php
+####################################################################################################
+# 1790. Check if One String Swap Can Make Strings Equal
+####################################################################################################
+
+class Solution {
+
+    /**
+     * @param String $s1 📝
+     * @param String $s2 📝
+     * @return Boolean ✅ or ❌
+     */
+    
+    function areAlmostEqual($s1, $s2) {
+        // If the strings are already equal, return true ✅
+        if ($s1 === $s2) {
+            return true; // 🎉 No swap needed!
+        }
+
+        $diff = []; // 📌 Store index differences
+
+        // 🔍 Find positions where s1 and s2 differ
+        for ($i = 0; $i < strlen($s1); $i++) {
+            if ($s1[$i] !== $s2[$i]) {
+                $diff[] = $i;
+            }
+        }
+
+        // 🔄 Check if swapping two characters makes them equal
+        return count($diff) === 2 && 
+               $s1[$diff[0]] === $s2[$diff[1]] && 
+               $s1[$diff[1]] === $s2[$diff[0]];
+    }
+}
+
+// 🚀 Example test cases
+$solution = new Solution();
+echo $solution->areAlmostEqual("bank", "kanb") ? "✅ True\n" : "❌ False\n"; // ✅ True
+echo $solution->areAlmostEqual("attack", "defend") ? "✅ True\n" : "❌ False\n"; // ❌ False
+echo $solution->areAlmostEqual("kelb", "kelb") ? "✅ True\n" : "❌ False\n"; // ✅ True
+
+?>
