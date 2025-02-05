@@ -80,3 +80,33 @@ echo $solution->areAlmostEqual("attack", "defend") ? "✅ True\n" : "❌ False\n
 echo $solution->areAlmostEqual("kelb", "kelb") ? "✅ True\n" : "❌ False\n"; // ✅ True
 
 ?>
+<?php
+####################################################################################################
+# 88. Merge Sorted Array
+####################################################################################################
+class Solution {
+
+    /**
+     * @param Integer[] $nums1
+     * @param Integer $m
+     * @param Integer[] $nums2
+     * @param Integer $n
+     * @return NULL
+     */
+    function merge(&$nums1, $m, $nums2, $n) {
+        $arr = [] ;
+        for ($i = 0 ; $i < $m ; $i++){
+            if($nums1 != 0 ){
+                $arr[] = $nums1[$i];
+            }
+        }
+        for ($j = 0 ; $j < $n ; $j++){
+            if($nums2 != 0 ){
+                $arr[] = $nums2[$j];
+            }
+        }
+        sort($arr);
+        $nums1 = $arr;
+    }
+}
+?>
