@@ -110,3 +110,38 @@ class Solution {
     }
 }
 ?>
+
+<?php
+####################################################################################################
+# 3160. Find the Number of Distinct Colors Among the Balls
+####################################################################################################
+
+class Solution {
+
+    /**
+     * @param Integer $limit
+     * @param Integer[][] $queries
+     * @return Integer[]
+     */
+    function queryResults($limit, $queries) {
+        $ballColors = [];
+        $colorCount = [];
+        $result = [];
+
+        foreach ($queries as [$ball, $color]) {
+            if (isset($ballColors[$ball])) {
+                $prevColor = $ballColors[$ball];
+
+                if (--$colorCount[$prevColor] === 0) {
+                    unset($colorCount[$prevColor]);
+                }
+            }
+            $ballColors[$ball] = $color;
+            $colorCount[$color] = ($colorCount[$color] ?? 0) + 1;
+            $result[] = count($colorCount);
+        }
+
+        return $result;
+    }
+}
+?>
