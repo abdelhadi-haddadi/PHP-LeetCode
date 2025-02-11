@@ -145,3 +145,28 @@ class Solution {
     }
 }
 ?>
+
+
+
+
+<?php
+####################################################################################################
+# 1910. Remove All Occurrences of a Substring
+####################################################################################################
+
+class Solution {
+    ###############################################
+    # @param String $s
+    # @param String $part
+    # @return String
+    ###############################################
+    
+    function removeOccurrences($s, $part) {
+        while (($pos = strpos($s, $part)) !== false) { # Find the first occurrence
+            $s = substr($s, 0, $pos) . substr($s, $pos + strlen($part)); # Remove only that occurrence
+        }
+        return $s;
+    }
+}
+?>
+
